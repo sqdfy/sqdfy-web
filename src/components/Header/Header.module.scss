@@ -1,0 +1,11 @@
+.headerBox {
+  display: flex;
+  gap: 8px;
+  margin: 32px 32px;
+}
+
+@media screen and (max-width:595px) {
+  .headerBox {
+    margin: 60px 40px 0 ;
+  }
+}
