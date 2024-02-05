@@ -2,23 +2,15 @@ import stl from './MainPage.module.scss'
 import { useState } from 'react'
 import { api } from '../api'
 
+const emailRegex = /^[\p{L}0-9_.+~-]+@[\p{L}0-9-]+\.[a-zA-Z0-9-.]+$/u
+
 export const MainPage = () => {
     const [isSuccess, setIsSuccess] = useState(false)
     const [email, setEmail] = useState('')
     const [formError, setFormError] = useState(null)
-    const [isButtonDisabled, setButtonDisabled] = useState(false)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
     const isEmailValid = (email) => {
         return emailRegex.test(email)
-    }
-
-    const disableButton = () => {
-        setButtonDisabled(true)
-    }
-
-    const enableButton = () => {
-        setButtonDisabled(false)
     }
 
     const setInvalidEmailError = () => {
@@ -36,18 +28,19 @@ export const MainPage = () => {
     const handleEmailInputBlur = (e) => {
         if (isEmailValid(email) || email.length === 0) {
             hideError()
-            enableButton()
         } else {
             setInvalidEmailError()
-            disableButton()
         }
+    }
+
+    const handleEmailInputFocus = (e) => {
+        hideError()
     }
 
     const handleButtonClick = (e) => {
         e.preventDefault()
         if (!isEmailValid(email)) {
             setInvalidEmailError()
-            disableButton()
             return
         }
         api.sendEmail(email)
@@ -60,12 +53,7 @@ export const MainPage = () => {
     const handleEmailInputChange = (e) => {
         const newEmail = e.target.value
         setEmail(newEmail)
-        if (isEmailValid(newEmail)) {
-            hideError()
-            enableButton()
-        } else {
-            disableButton()
-        }
+        hideError()
     }
 
     return (
@@ -121,6 +109,7 @@ export const MainPage = () => {
                                             placeholder="Enter you email"
                                             onChange={handleEmailInputChange}
                                             onBlur={handleEmailInputBlur}
+                                            onFocus={handleEmailInputFocus}
                                             value={email}
                                             required
                                         ></input>
@@ -132,10 +121,7 @@ export const MainPage = () => {
                                     ) : (
                                         ''
                                     )}
-                                    <button
-                                        onClick={handleButtonClick}
-                                        disabled={isButtonDisabled}
-                                    >
+                                    <button onClick={handleButtonClick}>
                                         Notify Me!
                                     </button>
                                 </form>
