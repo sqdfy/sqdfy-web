@@ -1,15 +1,12 @@
 import './App.css'
-import Header from "../Header/Header";
-import MainPage from "../../pages/MainPage";
+import { Header } from '../Header/Header'
+import { MainPage } from '../../pages/MainPage'
 
-
-const App = () => {
+export const App = () => {
     return (
         <div className="App">
-            <Header/>
+            <Header />
             <MainPage />
         </div>
     )
 }
-
-export default App
