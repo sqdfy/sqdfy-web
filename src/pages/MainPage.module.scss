@@ -25,25 +25,16 @@
 }
 
 .sqdfy {
-    //background: radial-gradient(
-    //    132.52% 121.31% at -19.86% 69.69%,
-    //    #5df6ff 8.98%,
-    //    #7ba0ff 32.87%,
-    //    #b072ff 60.85%,
-    //    #fc5fd0 85.6%
-    //);
-    background-image: linear-gradient(
-                    -225deg,
-                    #fc5fd0  8.98%,
-                    #b072ff 32.87%,
-                    #7ba0ff 60.85%,
-                    #5df6ff 85.6%
+    background: radial-gradient(
+        132.52% 121.31% at -19.86% 69.69%,
+        #5df6ff 8.98%,
+        #7ba0ff 32.87%,
+        #b072ff 60.85%,
+        #fc5fd0 85.6%
     );
-    background-size: 200% auto;
-    color: #fff;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: animation 4s ease-in-out infinite;
 }
 
 @keyframes animation {
