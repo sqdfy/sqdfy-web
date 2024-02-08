@@ -78,7 +78,7 @@ export const MainPage = () => {
                         {isSuccess ? (
                             <div className={stl.successedEmail}>
                                 <div className={stl.letter} />
-                                <h3>Thank You!</h3>
+                                <h3 className={stl.letterHeader}>Thank You!</h3>
                                 <p className={stl.successedEmailSpan}>
                                     Check your inbox for updates and exclusive
                                     insights about our app
@@ -129,8 +129,7 @@ export const MainPage = () => {
                         )}
                     </div>
                     <p className={stl.caption}>
-                        We respect your privacy. No spam, only exciting news
-                        about<span> sqdfy!</span>
+                        We respect your privacy. No spam, opt-out anytime.
                     </p>
                 </div>
             </div>
