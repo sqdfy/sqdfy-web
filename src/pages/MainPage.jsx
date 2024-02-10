@@ -57,7 +57,7 @@ export const MainPage = () => {
     }
 
     return (
-        <section id="mainInfo">
+        <section className={stl.mainPageContainer}>
             <div className={stl.mainPage}>
                 <div className={stl.headerBox}>
                     <h1 className={stl.header}>
