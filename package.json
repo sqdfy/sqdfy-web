@@ -1,7 +1,7 @@
 {
-    "name": "squadify",
-    "homepage": "sqdfy.com",
+    "name": "sqdfy",
     "version": "0.1.0",
+    "homepage": "https://sqdfy.com",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
