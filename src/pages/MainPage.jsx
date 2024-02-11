@@ -1,12 +1,17 @@
 import stl from './MainPage.module.scss'
-import { useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api } from '../api'
 
 const emailRegex = /^[\p{L}0-9_.+~-]+@[\p{L}0-9-]+\.[a-zA-Z0-9-.]+$/u
 
 export const MainPage = () => {
+    const initialEmail = useMemo(() => {
+        const url = new URL(window.location.href)
+        return Object.fromEntries(url.searchParams.entries())?.email || ''
+    }, [])
+
     const [isSuccess, setIsSuccess] = useState(false)
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState(initialEmail)
     const [formError, setFormError] = useState(null)
 
     const isEmailValid = (email) => {
@@ -33,22 +38,29 @@ export const MainPage = () => {
         }
     }
 
-    const handleEmailInputFocus = (e) => {
+    const handleEmailInputFocus = () => {
         hideError()
     }
 
-    const handleButtonClick = (e) => {
-        e.preventDefault()
-        if (!isEmailValid(email)) {
-            setInvalidEmailError()
-            return
-        }
-        api.sendEmail(email)
-            .then(() => setIsSuccess(true))
-            .catch(() => {
-                setServerError()
-            })
-    }
+    const handleButtonClick = useCallback(
+        (e) => {
+            if (e) e.preventDefault()
+            if (!isEmailValid(email)) {
+                setInvalidEmailError()
+                return
+            }
+            api.sendEmail(email)
+                .then(() => setIsSuccess(true))
+                .catch(() => {
+                    setServerError()
+                })
+        },
+        [email]
+    )
+
+    useEffect(() => {
+        if (initialEmail) handleButtonClick()
+    }, [initialEmail, handleButtonClick])
 
     const handleEmailInputChange = (e) => {
         const newEmail = e.target.value
