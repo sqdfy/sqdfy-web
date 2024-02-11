@@ -32,26 +32,26 @@
     text-transform: uppercase;
 }
 
+@keyframes shimmeringEffect {
+    to {
+        background-position: -200% center;
+    }
+}
+
 .sqdfy {
     background: radial-gradient(
-        132.52% 121.31% at -19.86% 69.69%,
+        circle at 100%,
         #5df6ff 8.98%,
         #7ba0ff 32.87%,
         #b072ff 60.85%,
-        #fc5fd0 85.6%
+        #ffca7b 85.6%,
+        #5df6ff 100%
     );
+    background-size: 200% 100%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-@keyframes animation {
-    from {
-        background-position: 200% center;
-    }
-    to {
-        background-position: 0% center;
-    }
+    animation: shimmeringEffect 7s infinite linear;
 }
 
 .description {
