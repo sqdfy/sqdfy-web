@@ -1,13 +1,13 @@
 import './App.css'
 import { Header } from '../Header/Header'
 import { MainPage } from '../../pages/MainPage/MainPage'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { Unsubscribe } from '../../pages/Unsubscribe/Unsubscribe'
 
 export const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route
             path="/"
@@ -20,7 +20,7 @@ export const App = () => {
           />
           <Route path="/unsubscribe" element={<Unsubscribe />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
