@@ -61,7 +61,7 @@ export const MainPage = () => {
       <div className={stl.mainPage}>
         <div className={stl.headerBox}>
           <h1 className={stl.header}>
-            Get ready for<span className={stl.sqdfy}> Sqdfy</span>
+            Get ready for<span className={stl.sqdfy}> sqdfy</span>
           </h1>
           <p className={stl.description}>
             Discover, create, and enjoy social events like never before with
