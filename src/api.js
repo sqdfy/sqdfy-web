@@ -34,5 +34,5 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://api.sqdfy.com',
+  baseUrl: 'https://api.sqdfy.app',
 })
